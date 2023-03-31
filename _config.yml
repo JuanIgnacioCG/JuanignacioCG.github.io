@@ -1,11 +1,11 @@
-title: John Doe # your name (or website title) here
+title: Juan Ignacio Caballero Garzón # your name (or website title) here
 logo: "/images/logo.png?raw=true" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
-  First description 
+  Image&signal data scientist and PhD student
   <br><br>
-  Second description 
+  Materials engineer 
   <br><br>
-  <a href="https://www.linkedin.com/in/example/">View My LinkedIn Profile</a> 
+  <a href="https://www.linkedin.com/in/juan-ignacio-caballero-garz%C3%B3n-/">View My LinkedIn Profile</a> 
   
   
 theme: jekyll-theme-minimal
