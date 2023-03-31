@@ -1,13 +1,28 @@
-## This can be your internal website page / project page
+## Relation between X-ray computed tomography (XCT) and Ultrasound (UT) for the study of porosity
 
-**Relation between X-ray computed tomography (XCT) and ultrasonic testing(UT) for the study of porosity:** An opportunity was found in the data fusion. In the one hand, XCT provides a 3D volume with very high resolution and detail of the defects (20um), but it demands more expensive equipment, and higher inspection and  analysis times than ultrasonic testing. On the other hand, ultrasonic testing does not provide enough detail and its results are difficult to interpret in occasions.
+<!-- **Relation between X-ray computed tomography (XCT) and Ultrasound (UT) for the study of porosity:**  -->
+### Introduction. 
+This was the start of my PhD thesis. The field area is the industrial inspection, particularly of composite materials.
+
+
+<div style="background-color: #EDF7FF; border-color: #7C9DBF; border-left: 5px solid #7C9DBF; padding: 0.5em;">    <strong>The Opportunity:</strong> The application of machine learning to improve existing ultrasonic techniques.
+</div>
+
+ In the one hand, XCT provides a 3D volume with very high resolution and detail of the defects (20um), but it demands more expensive equipment, and higher inspection and  analysis times than ultrasonic testing. On the other hand, ultrasonic testing does not provide enough detail and its results are difficult to interpret in occasions.
+
+ <div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;"> Machine learning models that learnt patterns through the relation of ultrasonics and XCT would improve existing ultrasonic techniques.
 
 ### 1. Hypothesis 1: The XCT and UT techniques can be related to study the amount of porosity in a composite material.
 
-The video of the left shows the segmented binary volume of XCT where you can see the porosity as the white structures. The video of the right is a render of 4 ultrasonic volumes and the inspection area with its supports, it is possible to see the reflection at the bottom of the water container.
-<video src="images/P1_imgs/mini_video ultrasonidos_confondo.mp4" controls="controls" style="max-width: 730px;">
+The first video shows the segmented binary volume of XCT where you can see the porosity as the white structures. The next video is a render of 4 ultrasonic volumes and the inspection area with its supports. .
+
+<video src="images/P1_imgs/mini_video ultrasonidos_confondo.mp4"
+       controls="controls"
+       style="max-width: 730px;">
 </video>
-<video src="images/P1_imgs/mini_video c4_rendered.mp4" controls="controls">
+<video src="images/P1_imgs/mini_video c4_rendered.mp4"
+       controls="controls"
+       style="max-width: 730px;">
 </video>
 
 
