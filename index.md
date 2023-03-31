@@ -4,16 +4,20 @@
 
 ### Category Name 1 
 
-[Project 1 Title](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+[Relation between X-ray computed tomography (XCT) and Ultrasound (UT)](/P1_Relation_XCT_&_Ultrasonic)
+<img src="images/P1_imgs/img_different_window.png?raw=true"/>
 
 ---
-[Project 2 Title](/pdf/sample_presentation.pdf)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+[Models to predict porosity](/P2_Models_to_predict_porosity)
+<img src="images/P2_imgs/Superpixels.png?raw=true"/>
 
 ---
-[Project 3 Title](http://example.com/)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+[Segmentation of the porosity in 3D using CNNs](/P3_Segmentation_Porosity_3D)
+<img src="images/P3_imgs/Segmentation_results.png?raw=true"/>
+
+---
+[Classification of the porosity based on signal analysis](/P4_Classification_porosity)
+<img src="images/P4_imgs/Step_window_peak_analysis.png?raw=true"/>
 
 ---
 
