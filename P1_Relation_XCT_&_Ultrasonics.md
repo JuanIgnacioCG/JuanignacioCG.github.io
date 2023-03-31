@@ -10,7 +10,7 @@ This was the start of my PhD thesis. The field area is the industrial inspection
 
  In the one hand, XCT provides a 3D volume with very high resolution and detail of the defects (20um), but it demands more expensive equipment, and higher inspection and  analysis times than ultrasonic testing. On the other hand, ultrasonic testing does not provide enough detail and its results are difficult to interpret in occasions.
 
- <div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;"> Machine learning models that learnt patterns through the relation of ultrasonics and XCT would improve existing ultrasonic techniques.
+<div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;"> Machine learning models that learnt patterns through the relation of ultrasonics and XCT would improve existing ultrasonic techniques.
 </div>
 
 ### 1. Hypothesis 1: The XCT and UT techniques can be related to study the amount of porosity in a composite material.
