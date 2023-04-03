@@ -34,6 +34,8 @@ The dispersion in the graph of measured versus predicted was caused from the sli
 
 <img src="images/P2_imgs/Superpixels.png?raw=true"
         width="100%"/>
+<img src="images/P2_imgs/Superpixels_pred_vs_measured.png?raw=true"
+        style="width: 80%;display:flex;margin:auto"/>
 
 &nbsp;
 ### 4. Follow-up Work: Developing Models to Estimate Porosity
