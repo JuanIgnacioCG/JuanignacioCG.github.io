@@ -4,7 +4,7 @@ The porosity is the main defect when manufacturing composite materials. For that
 
 One approach consists to perform the ultrasonic inspection with the greatest resolution possible, to try to see how far this imaging technology can reach in terms of definition and clarity. The porosity is usually formed of voids, with the larger ones measuring up to several hundred micrometers, and the smaller ones around the dozens of micrometers. Probably the main obstable is the trade-off between the parameters that impact in the resolution of the ultrasonic image. To provide some examples, the higher the ultrasonic frequency, the better resolution. However, high frequencies may not be able to go through the thickness of the material, and therefore would not provide the information of the porosity in all the part.  
 
-<div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;">    In the improvement of the resolution of the resolution of ultrasonic imaging, probably the main obstable is the trade-off between the parameters that impact in the resolution.
+<div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;">    In the improvement of the resolution of imaging, probably the main obstable is the trade-off between the parameters that impact in the resolution.
 </div>
 
 &nbsp;
@@ -12,9 +12,9 @@ One approach consists to perform the ultrasonic inspection with the greatest res
 The first obstacle I faced was that I had no ultrasonic equipments available at my home experimental lab, the [IMDEA Materiales](https://materials.imdea.org/), to perform the inspections with the resolution I wanted. The equipments that I needed were the so called phased arrays, more info about them [here](https://www.olympus-ims.com/en/ndt-tutorials/phased-array/). Luckily, I was able to contact with [Jorge Camacho](https://www.itefi.csic.es/en/staff/camacho-sosa-dias-jorge) from the Spanish Research Council (CSIC), and at the end of the day establish a collaboration between his group and one of my PhD director's group, Federico Sket. Then we carried out the inspections of my materials with several phased arrays, using different frequencies. To keep it simple, we found the most optimal frequency was the 10 MHz. But the best result, the one that did surprise us, came after a meeting when we realized that we needed to focus more in the scan direction, and that a possible way to do so was by using an acoustic lense. The way this instrument works is equivalent to the effect of an optical lense such as the ones used in microscopy. With the phased array of 10MHz and a lense the resolution of the images enabled to distinguish most of the medium or large sized voids, yet, in some cases the UT seemed to yield false positives, probably produced by structures other than porosity (resin rich areas, composite plies...). The video below shows a composite part measured by XCT (left), and phased array (UT) right, it can be appreciated the similarities between the voids in XCT (black regions) and the same voids seen in UT (white structures).
 
 <img src="images/P3_imgs/Optimization_UT.png?raw=true"
-        width="80%" /> 
-<video src="images/P3_imgs/XCT_PA_Comparison_portfolio_edited.mp4" controls="controls" style="width: 50%;"> </video> 
- 
+        width="100%" /> 
+<video src="images/P3_imgs/XCT_PA_Comparison_portfolio_edited.mp4" controls="controls" class="center" style="width: 50%;"> </video> 
+&nbsp;
 <div style="background-color: #EDF7FF; border-color: #7C9DBF; border-left: 5px solid #7C9DBF; padding: 0.5em;">   We thought that the use of convolutional neural networks(CNNs), would help in the segmentation of the true voids in the phased array UT.
 </div>
 
@@ -23,7 +23,7 @@ The first obstacle I faced was that I had no ultrasonic equipments available at 
 To train the CNN two approaches were studied: to use the XCT as ground truth, therefore, doing an multimodal(XCT/UT) image registration process; or to label manually the ground truth. The image below show the difference in the labels for each case:  
 
 <img src="images/P3_imgs/Manual_labels_VS_XCT_labels.png?raw=true"
-        width="60%" /> 
+        width="90%" class="center" /> 
 
 &nbsp;
 ### 3. CNN Segmentation of the porosity in 3D data.
@@ -42,7 +42,8 @@ Finally, a CNN network like the one shown below was trained for the two possible
 \caption{Training evaluation metrics.}
 \label{table:trainingresults}
 \end{table}
-
+```
+$$
 \begin{table}[h]
 \centering
 \begin{tabular}{l|l|l|}
@@ -55,12 +56,12 @@ Finally, a CNN network like the one shown below was trained for the two possible
 \caption{Test evaluation metrics.}
 \label{table:testresults}
 \end{table}
-```
+$$
 
 <img src="images/P3_imgs/CNN_struct.png?raw=true"
-        width="60%" />
+        width="100%" class="center" />
 <img src="images/P3_imgs/Segmentation_results.png?raw=true"
-        width="80%" />
+        width="80%" class="center" />
 
 <div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;"> The segmentation was better for the CNN trained on the manual labels, its results were a good start. However, to infer in 3D and use the segmented volume to other processes, the performance needs to be improved.
 </div>
