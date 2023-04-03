@@ -1,27 +1,41 @@
-## This can be your internal website page / project page
+## Models to predict porosity using ultrasounds
 
-**Relation between X-ray computed tomography (XCT) and Ultrasound (UT) for the study of porosity:** An opportunity was found in the data fusion. In the one hand, XCT provides a 3D volume with very high resolution and detail of the defects (20um), but it demands more expensive equipment, and higher inspection and  analysis times than ultrasonic testing. On the other hand, ultrasonic testing does not provide enough detail and its results are difficult to interpret in occasions.
+### Introduction. 
+A clear correlation was found between the images obtained through the methodology explained in the [previous project](/P1_Relation_XCT_&_Ultrasonics). At this time the challenge consisted in developing models to predict the XCT image from the ultrasonic data. For this task the challenge was to measure different properties of the ultrasonic data. One option was to do the traditional approach in the field, computing only the attenuation of the ultrasonic signals. However, I decided to compute several further ultrasonic features and let the models decide which were the most relevant.
 
-### 1. Hypothesis 1: The XCT and UT techniques can be related to study the amount of porosity in a composite material.
+<div style="background-color: #EDF7FF; border-color: #7C9DBF; border-left: 5px solid #7C9DBF; padding: 0.5em;">   For the prediction of the XCT image a whole set of  features could computed from the ultrasonic signals. Its selection and the development of machine learning models.
+</div>
 
-The video of the left shows the segmented binary volume of XCT where you can see the porosity as the white structures. The video of the right is a render of 4 ultrasonic volumes and the inspection area with its supports, it is possible to see the reflection at the bottom of the water container.
-<video src="images/P1_imgs/mini_video ultrasonidos_confondo.mp4" controls="controls" style="max-width: 730px;">
-</video>
-<video src="images/P1_imgs/mini_video c4_rendered.mp4" controls="controls">
-</video>
+&nbsp;
+### 1. Extracting features from the signals & feature selection.
+The ultrasonic data can be represented as a collection of signals like the one shown below. The signals are interpretable, the three peaks are produced by physical events, and particularly the data points between the first and second peaks are the ones with the most information. A battery of operations (area, entropy, peaks analysis,...) were applied to obtain several features.
 
+<img src="images/P2_imgs/Ascan_con_puntos.png?raw=true"
+        width="49%" /> <img src="images/P2_imgs/correlation_matrix_c6.png?raw=true"
+        width="49%" />
 
-### 2. Work carried out: Develop a methodology to automate the measurement of properties in the 3D volumes of XCT and UT.
+Afterwards, we had to perform the selection of the most relevant features to predict the XCT image. For that purpose several tasks were performed, including lineal correlation among features, and feature selection algorithms such as filtering by the F-test, by mutual information statistics, a recursive feature extraction (RFE) with lineal regression, and filtering by feature importance of a regression tree.  
 
-It was time to start to get data from the available composite material. The work included carrying out inspection by XCT and ultrasonic testing, the coding of the methodology and the automation in the analysis of the results.
-<img src="images/P1_imgs/Methodology_layout.png?raw=true"/>
-<img src="images/P1_imgs/Props_process.png?raw=true"/>
+&nbsp;
+### 2. Models and error analysis.
+Once we knew the most relevant ultrasonic features, it came the time to predict the XCT image. The training of models and error assessment steps were included into the methodology explained in the first part of the [project](/P1_Relation_XCT_&_Ultrasonics). The explainability and interpretability of the models played a huge factor in the whole process. Only models that yield a weight of the used features were used. Additionally, the error was assessed in different ways, being the visualization of the mean squeared error and the error were probably the most intuitive. 
 
+<img src="images/P2_imgs/c4_eval_pred_real.png?raw=true"
+        width="658" /> 
+<img src="images/P2_imgs/Error_analysis_data_visualization.png?raw=true"
+        width="658" />
 
-### 3. Outcome: An image shows the clear correlation between the measurement of porosity in XCT, and the attenuation obtained from the UT.
+<div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;"> The models were successful in the estimation of XCT. However, the dispersion in the graph of measured versus predicted was targeted as a thing to improve.
+</div>
 
-<img src="images/P1_imgs/img_different_window.png?raw=true"/>
+&nbsp;
+### 3. Final improvement of the models. Superpixels and the prediction in homogenous regions.
+The dispersion in the graph of measured versus predicted was caused from the sliding window process of the methodology. At the time of modeling edge regions with sudden changes in the porosity content, together with the influence of the resolution differecen between XCT and UT; were introducing noise in the models. A different approach consisted in adding a step to estimate in regions with uniform ultrasonic values. These regions were computed using the superpixel [SLIC](https://scikit-image.org/docs/dev/api/skimage.segmentation.html#skimage.segmentation.slic) algorithm on the attenuation image. It resulted in much uniform estimations of the XCT porosity. 
 
-### 4. Followup work: Develop models to estimate porosity measured in XCT by features of the ultrasonic data.
+<img src="images/P2_imgs/Superpixels.png?raw=true"
+        width="80%" />
 
-The next goal is to be able to predict the porosity quantity from ultrasonic features. In the next project link, the data science methodology with the data splitting techniques, modeling, and error analysis is presented. 
+&nbsp;
+### 4. Follow-up Work: Developing Models to Estimate Porosity
+
+The prediction of the porosity measured in the XCT was a success. The most relevant features were obtained, the models and its predictions were assessed by different techniques, and the estimation using homogenous regions reduced the error standard deviation. The next problem came with the data from a different composite material. The different morphology: the shape, size and distribution of the porosity, had an unknown influence in the estimation of porosity. My next goal was to be able to assess these parameters using only the ultrasonic signal. In the project, [Segmentation of the porosity in 3D using CNNs](/P3_Segmentation_Porosity_3D), and in the [Classification of the porosity based on signal analysis](/P4_Classification_porosity) I develop different approaches to tackle this problem.

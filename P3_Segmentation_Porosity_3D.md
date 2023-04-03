@@ -1,27 +1,71 @@
-## This can be your internal website page / project page
+## Segmentation of the porosity using CNNs
+### Introduction. 
+The porosity is the main defect when manufacturing composite materials. For that reason every composite component of the aerospace industry is inspected using ultrasounds to certify its quality. The inspections have a share approximately between the 15-25% of the final cost of the component. In previous posts we saw how I developed a methodology and models to estimate the amount of porosity using ultrasounds(UT) and X-ray computed tomography (XCT). In this post the goal is to show the work carried out to improve the information UT provides about the size, shape, and distribution of the porosity, which has been proved to have an impact in the performance of composite components.
 
-**Relation between X-ray computed tomography (XCT) and Ultrasound (UT) for the study of porosity:** An opportunity was found in the data fusion. In the one hand, XCT provides a 3D volume with very high resolution and detail of the defects (20um), but it demands more expensive equipment, and higher inspection and  analysis times than ultrasonic testing. On the other hand, ultrasonic testing does not provide enough detail and its results are difficult to interpret in occasions.
+One approach consists to perform the ultrasonic inspection with the greatest resolution possible, to try to see how far this imaging technology can reach in terms of definition and clarity. The porosity is usually formed of voids, with the larger ones measuring up to several hundred micrometers, and the smaller ones around the dozens of micrometers. Probably the main obstable is the trade-off between the parameters that impact in the resolution of the ultrasonic image. To provide some examples, the higher the ultrasonic frequency, the better resolution. However, high frequencies may not be able to go through the thickness of the material, and therefore would not provide the information of the porosity in all the part.  
 
-### 1. Hypothesis 1: The XCT and UT techniques can be related to study the amount of porosity in a composite material.
+<div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;">    In the improvement of the resolution of the resolution of ultrasonic imaging, probably the main obstable is the trade-off between the parameters that impact in the resolution.
+</div>
 
-The video of the left shows the segmented binary volume of XCT where you can see the porosity as the white structures. The video of the right is a render of 4 ultrasonic volumes and the inspection area with its supports, it is possible to see the reflection at the bottom of the water container.
-<video src="images/P1_imgs/mini_video ultrasonidos_confondo.mp4" controls="controls" style="max-width: 730px;">
-</video>
-<video src="images/P1_imgs/mini_video c4_rendered.mp4" controls="controls">
-</video>
+&nbsp;
+### 1. The collaboration with the ITEFI and the optimization of the ultrasonic inspections.
+The first obstacle I faced was that I had no ultrasonic equipments available at my home experimental lab, the [IMDEA Materiales](https://materials.imdea.org/), to perform the inspections with the resolution I wanted. The equipments that I needed were the so called phased arrays, more info about them [here](https://www.olympus-ims.com/en/ndt-tutorials/phased-array/). Luckily, I was able to contact with [Jorge Camacho](https://www.itefi.csic.es/en/staff/camacho-sosa-dias-jorge) from the Spanish Research Council (CSIC), and at the end of the day establish a collaboration between his group and one of my PhD director's group, Federico Sket. Then we carried out the inspections of my materials with several phased arrays, using different frequencies. To keep it simple, we found the most optimal frequency was the 10 MHz. But the best result, the one that did surprise us, came after a meeting when we realized that we needed to focus more in the scan direction, and that a possible way to do so was by using an acoustic lense. The way this instrument works is equivalent to the effect of an optical lense such as the ones used in microscopy. With the phased array of 10MHz and a lense the resolution of the images enabled to distinguish most of the medium or large sized voids, yet, in some cases the UT seemed to yield false positives, probably produced by structures other than porosity (resin rich areas, composite plies...). The video below shows a composite part measured by XCT (left), and phased array (UT) right, it can be appreciated the similarities between the voids in XCT (black regions) and the same voids seen in UT (white structures).
 
+<img src="images/P3_imgs/Optimization_UT.png?raw=true"
+        width="80%" /> 
+<video src="images/P3_imgs/XCT_PA_Comparison_portfolio_edited.mp4" controls="controls" style="width: 50%;"> </video> 
+ 
+<div style="background-color: #EDF7FF; border-color: #7C9DBF; border-left: 5px solid #7C9DBF; padding: 0.5em;">   We thought that the use of convolutional neural networks(CNNs), would help in the segmentation of the true voids in the phased array UT.
+</div>
 
-### 2. Work carried out: Develop a methodology to automate the measurement of properties in the 3D volumes of XCT and UT.
+&nbsp;
+### 2. Labeling the ground truth.
+To train the CNN two approaches were studied: to use the XCT as ground truth, therefore, doing an multimodal(XCT/UT) image registration process; or to label manually the ground truth. The image below show the difference in the labels for each case:  
 
-It was time to start to get data from the available composite material. The work included carrying out inspection by XCT and ultrasonic testing, the coding of the methodology and the automation in the analysis of the results.
-<img src="images/P1_imgs/Methodology_layout.png?raw=true"/>
-<img src="images/P1_imgs/Props_process.png?raw=true"/>
+<img src="images/P3_imgs/Manual_labels_VS_XCT_labels.png?raw=true"
+        width="60%" /> 
 
+&nbsp;
+### 3. CNN Segmentation of the porosity in 3D data.
+Finally, a CNN network like the one shown below was trained for the two possible ground truth. The manual labels outperformed the XCT ones, as it can be seen in the metrics. Probably the XCT labels were not adequate due to the resolution (and size) differences between the label and the UT structure.
 
-### 3. Outcome: An image shows the clear correlation between the measurement of porosity in XCT, and the attenuation obtained from the UT.
+```Latex
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l|}
+\cline{2-3}
+                                     & XCT labels & Manual labels \\ \hline
+\multicolumn{1}{|l|}{Avg Training Precision:} & 0.33       & 0.74      \\ \hline
+\multicolumn{1}{|l|}{Avg Training Recall:}    & 0.33       & 0.75      \\ \hline
+\multicolumn{1}{|l|}{Avg Training F1:}        & 0.31       & 0.75      \\ \hline
+\end{tabular}
+\caption{Training evaluation metrics.}
+\label{table:trainingresults}
+\end{table}
 
-<img src="images/P1_imgs/img_different_window.png?raw=true"/>
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l|}
+\cline{2-3}
+                                     & XCT labels & Manual labels \\ \hline
+\multicolumn{1}{|l|}{Avg Test Precision:} & 0.29       & 0.53      \\ \hline
+\multicolumn{1}{|l|}{Avg Test Recall:}    & 0.43       & 0.89      \\ \hline
+\multicolumn{1}{|l|}{Avg Test F1:}        & 0.30       & 0.63      \\ \hline
+\end{tabular}
+\caption{Test evaluation metrics.}
+\label{table:testresults}
+\end{table}
+```
 
-### 4. Followup work: Develop models to estimate porosity measured in XCT by features of the ultrasonic data.
+<img src="images/P3_imgs/CNN_struct.png?raw=true"
+        width="60%" />
+<img src="images/P3_imgs/Segmentation_results.png?raw=true"
+        width="80%" />
 
-The next goal is to be able to predict the porosity quantity from ultrasonic features. In the next project link, the data science methodology with the data splitting techniques, modeling, and error analysis is presented. 
+<div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;"> The segmentation was better for the CNN trained on the manual labels, its results were a good start. However, to infer in 3D and use the segmented volume to other processes, the performance needs to be improved.
+</div>
+
+&nbsp;
+### 4. Follow-up Work: To improve the segmentation overall performance of porosity in UT.
+
+Big steps were performed in the assessment of porosity size, shape, and distribution using UT. The optimization of the UT techniques, together with the development of CNNs enable the segmentation of the voids. It is true the results still need to improve to be of used, but it is also true that we carried out important milestones. There are possible ways of improving the performance such as the use of further input features from the ultrasonic signal, greater datasets, and even further optimization of the ultrasonic equipment. 
