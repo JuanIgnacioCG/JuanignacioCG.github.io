@@ -23,40 +23,14 @@ The first obstacle I faced was that I had no ultrasonic equipments available at 
 To train the CNN two approaches were studied: to use the XCT as ground truth, therefore, doing an multimodal(XCT/UT) image registration process; or to label manually the ground truth. The image below show the difference in the labels for each case:  
 
 <img src="images/P3_imgs/Manual_labels_VS_XCT_labels.png?raw=true"
-        width="90%" class="center" /> 
+        width="100%" class="center" /> 
 
 &nbsp;
 ### 3. CNN Segmentation of the porosity in 3D data.
 Finally, a CNN network like the one shown below was trained for the two possible ground truth. The manual labels outperformed the XCT ones, as it can be seen in the metrics. Probably the XCT labels were not adequate due to the resolution (and size) differences between the label and the UT structure.
 
-```Latex
-\begin{table}[h]
-\centering
-\begin{tabular}{l|l|l|}
-\cline{2-3}
-                                     & XCT labels & Manual labels \\ \hline
-\multicolumn{1}{|l|}{Avg Training Precision:} & 0.33       & 0.74      \\ \hline
-\multicolumn{1}{|l|}{Avg Training Recall:}    & 0.33       & 0.75      \\ \hline
-\multicolumn{1}{|l|}{Avg Training F1:}        & 0.31       & 0.75      \\ \hline
-\end{tabular}
-\caption{Training evaluation metrics.}
-\label{table:trainingresults}
-\end{table}
-```
-$$
-\begin{table}[h]
-\centering
-\begin{tabular}{l|l|l|}
-\cline{2-3}
-                                     & XCT labels & Manual labels \\ \hline
-\multicolumn{1}{|l|}{Avg Test Precision:} & 0.29       & 0.53      \\ \hline
-\multicolumn{1}{|l|}{Avg Test Recall:}    & 0.43       & 0.89      \\ \hline
-\multicolumn{1}{|l|}{Avg Test F1:}        & 0.30       & 0.63      \\ \hline
-\end{tabular}
-\caption{Test evaluation metrics.}
-\label{table:testresults}
-\end{table}
-$$
+<img src="images/P3_imgs/Metrics_table.png?raw=true"
+        style="width: 80%;display:flex;margin:auto"/>
 
 <img src="images/P3_imgs/CNN_struct.png?raw=true"
         width="100%" class="center" />
