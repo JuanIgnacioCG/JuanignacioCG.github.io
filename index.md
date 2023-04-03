@@ -12,6 +12,7 @@
 ---
 [Models to predict porosity](/P2_Models_to_predict_porosity)
 <img src="images/P2_imgs/Superpixels.png?raw=true"
+        width="800"
         height="320"/>
 
 ---

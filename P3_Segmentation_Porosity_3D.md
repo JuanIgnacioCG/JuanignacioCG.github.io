@@ -13,7 +13,7 @@ The first obstacle I faced was that I had no ultrasonic equipments available at 
 
 <img src="images/P3_imgs/Optimization_UT.png?raw=true"
         width="100%" /> 
-<video src="images/P3_imgs/XCT_PA_Comparison_portfolio_edited.mp4" controls="controls" class="center" style="width: 50%;"> </video> 
+<video src="images/P3_imgs/XCT_PA_Comparison_portfolio_edited.mp4" controls="controls" style="width: 50%;display:flex;margin:auto"> </video> 
 &nbsp;
 <div style="background-color: #EDF7FF; border-color: #7C9DBF; border-left: 5px solid #7C9DBF; padding: 0.5em;">   We thought that the use of convolutional neural networks(CNNs), would help in the segmentation of the true voids in the phased array UT.
 </div>
