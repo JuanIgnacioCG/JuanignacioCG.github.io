@@ -11,7 +11,7 @@ A clear correlation was found between the images obtained through the methodolog
 The ultrasonic data can be represented as a collection of signals like the one shown below. The signals are interpretable, the three peaks are produced by physical events, and particularly the data points between the first and second peaks are the ones with the most information. A battery of operations (area, entropy, peaks analysis,...) were applied to obtain several features.
 
 <img src="images/P2_imgs/Ascan_con_puntos.png?raw=true"
-        width="40%" /> <img src="images/P2_imgs/correlation_matrix_c6.png?raw=true"
+        width="39%" /> <img src="images/P2_imgs/correlation_matrix_c6.png?raw=true"
         width="60%" />
 
 Afterwards, we had to perform the selection of the most relevant features to predict the XCT image. For that purpose several tasks were performed, including lineal correlation among features, and feature selection algorithms such as filtering by the F-test, by mutual information statistics, a recursive feature extraction (RFE) with lineal regression, and filtering by feature importance of a regression tree.  
@@ -33,7 +33,7 @@ Once we knew the most relevant ultrasonic features, it came the time to predict 
 The dispersion in the graph of measured versus predicted was caused from the sliding window process of the methodology. At the time of modeling edge regions with sudden changes in the porosity content, together with the influence of the resolution differecen between XCT and UT; were introducing noise in the models. A different approach consisted in adding a step to estimate in regions with uniform ultrasonic values. These regions were computed using the superpixel [SLIC](https://scikit-image.org/docs/dev/api/skimage.segmentation.html#skimage.segmentation.slic) algorithm on the attenuation image. It resulted in much uniform estimations of the XCT porosity. 
 
 <img src="images/P2_imgs/Superpixels.png?raw=true"
-        width="100%" />
+        width="100%"/>
 
 &nbsp;
 ### 4. Follow-up Work: Developing Models to Estimate Porosity

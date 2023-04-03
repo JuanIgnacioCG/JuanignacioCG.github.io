@@ -6,7 +6,7 @@ As the start of my PhD thesis in industrial inspection of composite materials, I
 
 <div style="background-color: #EDF7FF; border-color: #7C9DBF; border-left: 5px solid #7C9DBF; padding: 0.5em;">    <strong>The Opportunity:</strong> The application of machine learning to improve existing ultrasonic techniques.
 </div>
-
+&nbsp;
 While XCT provides a 3D volume with high resolution and detail of defects (20um), it demands more expensive equipment and higher inspection and analysis times than UT. On the other hand, UT does not provide enough detail, and its results can be difficult to interpret at times. However, We believed that machine learning models that learn patterns through the relationship between ultrasonics and XCT would improve existing ultrasonic techniques. 
 
 <div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;"> We believed that machine learning models that learn patterns through the relationship between ultrasonics and XCT would improve existing ultrasonic techniques.
@@ -27,7 +27,7 @@ To collect data from the available composite material, I carried out inspection 
 <br/>
 ### 3. Outcome: Communicating Results with Images.
 
-<img src="images/P1_imgs/img_different_window.png?raw=true"/>
+<img src="images/P1_imgs/img_different_window.png?raw=true" width="100%"/>
 
 The images obtained by applying the methodology were used to form a final graphic to communicate the results. The 2D projection of the binary XCT and the attenuation of the ultrasonic volume are clearly correlated, but this relationship is affected by the scale of resolution of each technique. 
 <br/>
