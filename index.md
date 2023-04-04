@@ -2,7 +2,7 @@
 
 ---
 
-## Main projects 
+## Main projects
 
 [Relation between X-ray computed tomography (XCT) and Ultrasound (UT)](/P1_Relation_XCT_&_Ultrasonics)
 <img src="images/P1_imgs/img_different_window.png?raw=true"

@@ -13,6 +13,7 @@ While XCT provides a 3D volume with high resolution and detail of defects (20um)
 </div>
 &nbsp;
 &nbsp;
+
 ### 1. Hypothesis 1: The XCT and UT techniques can be related to study the amount of porosity in a composite material.
 
  To explore this relationship, I formulated the hypothesis that XCT and UT techniques could be related to study the amount of porosity in a composite material. the following videos show the 3D volumes of each technique. A render of four ultrasonic volumes and the inspection area with its supports, and one segmented binary volume of XCT that contains porosity as white structures.
@@ -25,14 +26,16 @@ While XCT provides a 3D volume with high resolution and detail of defects (20um)
 To collect data from the available composite material, I carried out inspection by XCT and ultrasonic testing, coded the methodology, and automated the computation of volumes. I also developed a methodology to automate the measurement of properties in the 3D volumes of XCT and UT, as shown in the following images:
 <img src="images/P1_imgs/Methodology_layout.png?raw=true"/>
 <img src="images/P1_imgs/Props_process.png?raw=true"/>
-<br/>
+&nbsp;
+&nbsp;
 
 ### 3. Outcome: Communicating Results with Images.
 
 <img src="images/P1_imgs/img_different_window.png?raw=true" width="100%"/>
 
 The images obtained by applying the methodology were used to form a final graphic to communicate the results. The 2D projection of the binary XCT and the attenuation of the ultrasonic volume are clearly correlated, but this relationship is affected by the scale of resolution of each technique. 
-<br/>
+&nbsp;
+&nbsp;
 
 ### 4. Follow-up Work: Developing Models to Estimate Porosity
 
