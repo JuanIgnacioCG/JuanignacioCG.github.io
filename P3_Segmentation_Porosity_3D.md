@@ -1,33 +1,40 @@
-## Segmentation of the porosity using CNNs
-### Introduction. 
-The porosity is the main defect when manufacturing composite materials. For that reason every composite component of the aerospace industry is inspected using ultrasounds to certify its quality. The inspections have a share approximately between the 15-25% of the final cost of the component. In previous posts we saw how I developed a methodology and models to estimate the amount of porosity using ultrasounds(UT) and X-ray computed tomography (XCT). In this post the goal is to show the work carried out to improve the information UT provides about the size, shape, and distribution of the porosity, which has been proved to have an impact in the performance of composite components.
+# Segmentation of the porosity using CNNs
 
-One approach consists to perform the ultrasonic inspection with the greatest resolution possible, to try to see how far this imaging technology can reach in terms of definition and clarity. The porosity is usually formed of voids, with the larger ones measuring up to several hundred micrometers, and the smaller ones around the dozens of micrometers. Probably the main obstable is the trade-off between the parameters that impact in the resolution of the ultrasonic image. To provide some examples, the higher the ultrasonic frequency, the better resolution. However, high frequencies may not be able to go through the thickness of the material, and therefore would not provide the information of the porosity in all the part.  
+## Introduction
 
-<div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;">    In the improvement of the resolution of imaging, probably the main obstable is the trade-off between the parameters that impact in the resolution.
+Have you ever wondered how the aerospace industry ensures the quality of composite materials used in manufacturing? Well, one of the most important factors to consider is porosity. To certify the quality of composite components, ultrasonic inspections are conducted, which can account for up to 25% of the component's final cost. In this post, we explore a methodology that improves the information provided by ultrasonic imaging and its impact on the performance of composite components.
+
+Porosity is typically formed by voids ranging in size from several hundred micrometers to dozens of micrometers. A challenge is to balance the parameters that affect the resolution of ultrasonic imaging. For example, higher ultrasonic frequency can provide better resolution, but it may not be able to penetrate the thickness of the material, thereby failing to provide porosity information throughout the part.
+
+<div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;">    The trade-off between resolution-impacting parameters is likely the primary obstacle in enhancing imaging resolution.
 </div>
-
 &nbsp;
-### 1. The collaboration with the ITEFI and the optimization of the ultrasonic inspections.
-The first obstacle I faced was that I had no ultrasonic equipments available at my home experimental lab, the [IMDEA Materiales](https://materials.imdea.org/), to perform the inspections with the resolution I wanted. The equipments that I needed were the so called phased arrays, more info about them [here](https://www.olympus-ims.com/en/ndt-tutorials/phased-array/). Luckily, I was able to contact with [Jorge Camacho](https://www.itefi.csic.es/en/staff/camacho-sosa-dias-jorge) from the Spanish Research Council (CSIC), and at the end of the day establish a collaboration between his group and one of my PhD director's group, Federico Sket. Then we carried out the inspections of my materials with several phased arrays, using different frequencies. To keep it simple, we found the most optimal frequency was the 10 MHz. But the best result, the one that did surprise us, came after a meeting when we realized that we needed to focus more in the scan direction, and that a possible way to do so was by using an acoustic lense. The way this instrument works is equivalent to the effect of an optical lense such as the ones used in microscopy. With the phased array of 10MHz and a lense the resolution of the images enabled to distinguish most of the medium or large sized voids, yet, in some cases the UT seemed to yield false positives, probably produced by structures other than porosity (resin rich areas, composite plies...). The video below shows a composite part measured by XCT (left), and phased array (UT) right, it can be appreciated the similarities between the voids in XCT (black regions) and the same voids seen in UT (white structures).
+
+## 1. The collaboration with the ITEFI and the optimization of the ultrasonic inspections
+
+I took the initiative to start a collaboration with [Jorge Camacho](https://www.itefi.csic.es/en/staff/camacho-sosa-dias-jorge) from the Spanish Research Council to tackle the main obstacle I faced in my home experimental lab at [IMDEA Materiales](https://materials.imdea.org/) - the lack of ultrasonic equipment to inspect my materials with the desired resolution. With the help of phased arrays,more info about them [here](https://www.olympus-ims.com/en/ndt-tutorials/phased-array/), we were able to optimize the inspection frequency and discovered that using an acoustic lens could significantly improve the resolution of the images, allowing us to distinguish most of the medium or large sized voids. My perseverance in finding a solution led to a discovery that even surprised us. Check out the video below to see the similarities between the voids in XCT and the ones seen in phased array UT.
 
 <img src="images/P3_imgs/Optimization_UT.png?raw=true"
         width="100%" /> 
-<video src="images/P3_imgs/XCT_PA_Comparison_portfolio_edited.mp4" controls="controls" style="width: 50%;display:flex;margin:auto"> </video> 
-&nbsp;
-<div style="background-color: #EDF7FF; border-color: #7C9DBF; border-left: 5px solid #7C9DBF; padding: 0.5em;">   We thought that the use of convolutional neural networks(CNNs), would help in the segmentation of the true voids in the phased array UT.
-</div>
+<video src="images/P3_imgs/XCT_PA_Comparison_portfolio_edited.mp4" controls="controls" style="width: 50%;display:flex;margin:auto"> </video>
 
+The resolution of images improved significantly, enabling us to distinguish most medium or large-sized voids. However, we also experienced false positives, which may have been produced by structures other than porosity (e.g., resin-rich areas, composite plies).
 &nbsp;
-### 2. Labeling the ground truth.
-To train the CNN two approaches were studied: to use the XCT as ground truth, therefore, doing an multimodal(XCT/UT) image registration process; or to label manually the ground truth. The image below show the difference in the labels for each case:  
+<div style="background-color: #EDF7FF; border-color: #7C9DBF; border-left: 5px solid #7C9DBF; padding: 0.5em;">   After optimizing the ultrasonic techniques, we were able to visualize individual voids through ultrasounds for the very first time. However, a new hurdle emerged as we needed to differentiate genuine defects from false positives. .
+</div>
+&nbsp;
+
+## 2. Labeling the ground truth
+
+To address this issue, we used convolutional neural networks (CNNs) to segment genuine defects in phased array UT. We considered two approaches for training the CNN: using XCT as the ground truth or labeling the ground truth manually. We found that the manual labels outperformed the XCT ones, as they were more adequate due to resolution and size differences between the label and the UT structure. 
 
 <img src="images/P3_imgs/Manual_labels_VS_XCT_labels.png?raw=true"
-        width="100%" class="center" /> 
-
+        width="100%" class="center" />
 &nbsp;
-### 3. CNN Segmentation of the porosity in 3D data.
-Finally, a CNN network like the one shown below was trained for the two possible ground truth. The manual labels outperformed the XCT ones, as it can be seen in the metrics. Probably the XCT labels were not adequate due to the resolution (and size) differences between the label and the UT structure.
+
+## 3. CNN Segmentation of the porosity in 3D data
+
+After diligent efforts, we successfully trained a CNN model to segment porosity using a customized dataset of 2D images. The trained model was then utilized to analyze 3D data by treating it as a series of 2D slices. While the initial results are promising, with an F1 average between 0.6-0.7, further refinements are necessary to achieve optimal performance.
 
 <img src="images/P3_imgs/Metrics_table.png?raw=true"
         style="width: 80%;display:flex;margin:auto"/>
@@ -37,10 +44,12 @@ Finally, a CNN network like the one shown below was trained for the two possible
 <img src="images/P3_imgs/Segmentation_results.png?raw=true"
         width="80%" class="center" />
 
-<div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;"> The segmentation was better for the CNN trained on the manual labels, its results were a good start. However, to infer in 3D and use the segmented volume to other processes, the performance needs to be improved.
+<div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;"> The CNN trained on manually labeled data produced superior segmentation results, which was an encouraging start. Nonetheless, for the segmented volume to be utilized in other processes and for 3D inference, performance improvements are necessary.
 </div>
-
 &nbsp;
-### 4. Follow-up Work: To improve the segmentation overall performance of porosity in UT.
 
-Big steps were performed in the assessment of porosity size, shape, and distribution using UT. The optimization of the UT techniques, together with the development of CNNs enable the segmentation of the voids. It is true the results still need to improve to be of used, but it is also true that we carried out important milestones. There are possible ways of improving the performance such as the use of further input features from the ultrasonic signal, greater datasets, and even further optimization of the ultrasonic equipment. 
+## 4. Follow-up Work: To improve the segmentation overall performance of porosity in UT
+
+Significant progress has been made in evaluating porosity characteristics, including size, shape, and distribution, through ultrasonic techniques. By optimizing these techniques and developing convolutional neural networks, we have been able to segment voids, although further improvement is necessary for practical application. Nevertheless, we have achieved important milestones, and there are ways to enhance the performance, such as incorporating additional input features from the ultrasonic signal, expanding datasets, and fine-tuning the used CNN and ultrasonic equipment.
+
+If you wish to delve into the details of the work, you can refer to the paper that was presented at the [NDE4.0](https://www.ndt.net/search/docs.php3?id=27674) conference. 
