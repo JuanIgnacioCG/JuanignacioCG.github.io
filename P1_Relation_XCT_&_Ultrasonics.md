@@ -1,7 +1,7 @@
 ## Relation between X-ray computed tomography (XCT) and Ultrasound (UT) for the study of porosity
 
-<!-- **Relation between X-ray computed tomography (XCT) and Ultrasound (UT) for the study of porosity:**  -->
 ### Introduction. 
+
 As the start of my PhD thesis in industrial inspection of composite materials, I explored the relationship between X-ray computed tomography (XCT) and Ultrasound (UT) for the study of porosity. 
 
 <div style="background-color: #EDF7FF; border-color: #7C9DBF; border-left: 5px solid #7C9DBF; padding: 0.5em;">    <strong>The Opportunity:</strong> The application of machine learning to improve existing ultrasonic techniques.
@@ -19,18 +19,21 @@ While XCT provides a 3D volume with high resolution and detail of defects (20um)
 
 <video src="images/P1_imgs/mini_video ultrasonidos_confondo.mp4" controls="controls" style="width: 70%;"> </video> <video src="images/P1_imgs/c4_rendered.mp4" controls="controls" style="width: 25%;"> </video>
 <br/>
+
 ### 2. Work carried out: Developing a Methodology to Automate Volume Measurements.
 
 To collect data from the available composite material, I carried out inspection by XCT and ultrasonic testing, coded the methodology, and automated the computation of volumes. I also developed a methodology to automate the measurement of properties in the 3D volumes of XCT and UT, as shown in the following images:
 <img src="images/P1_imgs/Methodology_layout.png?raw=true"/>
 <img src="images/P1_imgs/Props_process.png?raw=true"/>
 <br/>
+
 ### 3. Outcome: Communicating Results with Images.
 
 <img src="images/P1_imgs/img_different_window.png?raw=true" width="100%"/>
 
 The images obtained by applying the methodology were used to form a final graphic to communicate the results. The 2D projection of the binary XCT and the attenuation of the ultrasonic volume are clearly correlated, but this relationship is affected by the scale of resolution of each technique. 
 <br/>
+
 ### 4. Follow-up Work: Developing Models to Estimate Porosity
 
 My next goal was to predict the XCT image from the ultrasonic data. In the next [project](/P2_Models_to_predict_porosity), I present the data science methodology with data splitting techniques, modeling, and error analysis to develop models to estimate porosity measured in XCT by features of the ultrasonic data.
