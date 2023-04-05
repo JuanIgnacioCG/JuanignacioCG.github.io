@@ -12,11 +12,12 @@ Porosity is typically formed by voids ranging in size from several hundred micro
 
 ## 1. The collaboration with the ITEFI and the optimization of the ultrasonic inspections
 
-I took the initiative to start a collaboration with [Jorge Camacho](https://www.itefi.csic.es/en/staff/camacho-sosa-dias-jorge) from the Spanish Research Council to tackle the main obstacle I faced in my home experimental lab at [IMDEA Materiales](https://materials.imdea.org/) - the lack of ultrasonic equipment to inspect my materials with the desired resolution. With the help of phased arrays,more info about them [here](https://www.olympus-ims.com/en/ndt-tutorials/phased-array/), we were able to optimize the inspection frequency and discovered that using an acoustic lens could significantly improve the resolution of the images, allowing us to distinguish most of the medium or large sized voids. My perseverance in finding a solution led to a discovery that even surprised us. Check out the video below to see the similarities between the voids in XCT and the ones seen in phased array UT.
+I took the initiative to start a collaboration with [Jorge Camacho](https://www.itefi.csic.es/en/staff/camacho-sosa-dias-jorge) from the Spanish Research Council to tackle the main obstacle I faced in my home experimental lab at [IMDEA Materiales](https://materials.imdea.org/) - the lack of ultrasonic equipment to inspect my materials with the desired resolution. With the help of phased arrays,more info about them [here](https://www.olympus-ims.com/en/ndt-tutorials/phased-array/), we were able to optimize the inspection frequency and discovered that using an acoustic lens could significantly improve the resolution of the images. My perseverance in finding a solution and the expertise of Jorge and Guillermo, led to a discovery that even surprised us. Check out the video below to see the similarities between the voids in XCT and the ones seen in phased array UT.
 
 <img src="images/P3_imgs/Optimization_UT.png?raw=true"
         width="100%" /> 
 <video src="images/P3_imgs/XCT_PA_Comparison_portfolio_edited.mp4" controls="controls" style="width: 50%;display:flex;margin:auto"> </video>
+&nbsp;
 
 The resolution of images improved significantly, enabling us to distinguish most medium or large-sized voids. However, we also experienced false positives, which may have been produced by structures other than porosity (e.g., resin-rich areas, composite plies).
 &nbsp;

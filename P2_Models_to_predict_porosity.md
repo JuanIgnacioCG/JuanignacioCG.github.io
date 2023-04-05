@@ -19,7 +19,7 @@ The ultrasonic data consists of a collection of signals that can be interpreted.
 
 ## 2. Models and Error Analysis
 
-Once I identified the most relevant ultrasonic features, I trained the models and performed error assessment using various techniques such as mean squared error and error visualization. Interpretability and explainability of the models were crucial factors in the whole process, and only models that yielded a weight of the used features were used. 
+Once I identified the most relevant ultrasonic features, I trained the models and performed error assessment using various techniques for data visualization and error assessment. Interpretability and explainability of the models were crucial factors in the whole process, and only models that yielded a weight of the used features were used. Four models: Lineal, multilineal, regression tree and random forest were trained. The most informative technique was the visualization of the MSE and error as a heatmap. The following images are an example of it: 
 
 <img src="images/P2_imgs/c4_eval_pred_real.png?raw=true"
         width="658" /> 
@@ -42,6 +42,6 @@ The sliding window process of the methodology caused the dispersion in the graph
 
 ## 4. Follow-up Work: Developing Models to Estimate Porosity
 
-The prediction of the porosity measured in the XCT was a success. The most relevant features were obtained, the models and its predictions were assessed by different techniques, and the estimation using homogenous regions reduced the error standard deviation. If you're really curious and want to dive deep into our work, you can check out the presentation we gave at the MMLDT-CSET conference. [MMLDT-CSET conference](https://www.morressier.com/o/event/6128fdff7000f900128c7f3b/article/612f6735bc98103724100767).
+The prediction of the porosity measured in the XCT was a success. The most relevant features were obtained, the models and its predictions were assessed by different techniques, and the estimation using homogenous regions reduced the error standard deviation. If you're really curious and want to dive deep into our work, you can check out the presentation we gave at the [MMLDT-CSET conference](https://www.morressier.com/o/event/6128fdff7000f900128c7f3b/article/612f6735bc98103724100767).
 
 My next goal was to develop models to estimate porosity in different composite materials. The unknown influence of the different morphology, such as the shape, size, and distribution of the porosity, posed a challenge in estimating porosity. In my subsequent projects,[Segmentation of the porosity in 3D using CNNs](/P3_Segmentation_Porosity_3D), and in the [Classification of the porosity based on signal analysis](/P4_Classification_porosity), I tell the different approaches to address this challenge.
