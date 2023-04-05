@@ -7,6 +7,7 @@ As the start of my PhD thesis in industrial inspection of composite materials, I
 <div style="background-color: #EDF7FF; border-color: #7C9DBF; border-left: 5px solid #7C9DBF; padding: 0.5em;">    <strong>The Opportunity:</strong> The application of machine learning to improve existing ultrasonic techniques.
 </div>
 &nbsp;
+
 While XCT provides a 3D volume with high resolution and detail of defects (20um), it demands more expensive equipment and higher inspection and analysis times than UT. On the other hand, UT does not provide enough detail, and its results can be difficult to interpret at times. However, We believed that machine learning models that learn patterns through the relationship between ultrasonics and XCT would improve existing ultrasonic techniques. 
 
 <div style="background-color: LightYellow; border-color: LightYellow; border-left: 5px solid Orange; padding: 0.5em;"> We believed that machine learning models that learn patterns through the relationship between ultrasonics and XCT would improve existing ultrasonic techniques.
